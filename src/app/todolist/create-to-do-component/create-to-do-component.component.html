@@ -1,0 +1,40 @@
+<div fxLayout="row" fxLayoutAlign="space-around  stretch" >
+    <div fxFlex="35">
+        <mat-card >
+            <mat-toolbar color="primary" fxLayoutAlign="center center">
+            <h2 >Add Task</h2></mat-toolbar>
+            <form [formGroup]="toDolist"  fxLayout="column" fxLayoutAlign="space-between stretch" auto-submit="3000">
+                <mat-form-field appearance="outline">
+                    <mat-label>Task Name</mat-label>
+                    <input matInput formControlName="taskName">
+                    <mat-error *ngIf="toDolist.controls['taskName'].hasError('required')" >
+                        Task name is required.
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput formControlName="taskDescription" rows="10"></textarea>
+                    <mat-error *ngIf="toDolist.controls['taskDescription'].hasError('required')" >
+                         Description is required.
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Repeating Task</mat-label>
+                    <mat-select formControlName="repeatingTask">
+                      <mat-option value="yes" >Y</mat-option>
+                      <mat-option value="No" >N</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </form>
+        </mat-card>
+    </div>
+<div fxFlex="30">
+    <app-to-do-list [submittedTasks] = "submittedTasks"></app-to-do-list>
+</div>
+<div fxFlex="30">
+    <app-done-list-component></app-done-list-component>
+</div>
+
+</div>
+
+
